@@ -39,7 +39,7 @@ services:
     volumes:
       - ./frontend:/usr/src/app
     ports:
-      - "8000:3000"
+      - "8000:8000"
 volumes:
   db:
     driver: local

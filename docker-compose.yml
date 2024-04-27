@@ -34,7 +34,9 @@ services:
     image: node:21-alpine
     container_name: portfolio-node
     working_dir: /usr/src/app
-    command: yarn start
+    command: ash -c "
+      yarn install &&
+      yarn start"
     volumes:
       - ./frontend:/usr/src/app
     ports:

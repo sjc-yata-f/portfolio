@@ -1,5 +1,5 @@
-import React from 'react';
-import logo from './logo.svg';
+// import React from 'react';
+// import logo from './logo.svg';
 // import './App.css';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Box } from '@chakra-ui/react'

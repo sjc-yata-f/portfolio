@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom'
 import { Flex, Box, Heading } from '@chakra-ui/react'
 import { VStack, StackDivider } from '@chakra-ui/react'
 
@@ -22,14 +22,18 @@ export const TopPage = () => {
           spacing={4}
           align='stretch'
         >
-          <Box h='40px' bg='yellow.200'>
-            1
-          </Box>
-          <Box h='40px' bg='tomato'>
-            2
-          </Box>
+          <Link to='/skills'>
+            <Box h='40px' bg='yellow.200'>
+              スキル
+            </Box>
+          </Link>
+          <Link to='/works'>
+            <Box h='40px' bg='tomato'>
+              仕事
+            </Box>
+          </Link>
           <Box h='40px' bg='pink.100'>
-            3
+            連絡先
           </Box>
         </VStack>
       </Box>

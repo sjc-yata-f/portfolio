@@ -1,4 +1,5 @@
 import { Flex, Box, Heading } from '@chakra-ui/react'
+import { Menu } from './Menu'
 
 export const Works = () => {
     const Title = 'Works';
@@ -14,6 +15,7 @@ export const Works = () => {
         <Box flex='1'>
           <Heading size='md'>{Title}</Heading>
         </Box>
+        <Menu />
       </Flex>
     )
   };

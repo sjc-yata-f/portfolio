@@ -1,7 +1,7 @@
 import { Layout } from './Layout'
 
-export const TopPage = () => {
-  const Title = 'Portfolio App';
+export const Skills = () => {
+  const Title = 'Skills';
 
   return (
     <Layout title={Title} />

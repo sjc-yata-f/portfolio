@@ -19,6 +19,10 @@ Style/Documentation:
 Style/SymbolArray:
   EnforcedStyle: brackets
 
+Layout/CommentIndentation:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
 RSpecRails/InferredSpecType:
   Enabled: false
 

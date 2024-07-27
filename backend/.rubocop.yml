@@ -10,6 +10,7 @@ AllCops:
     - 'Gemfile'
     - 'Rakefile'
     - 'config.ru'
+    - 'lib/tasks/auto_annotate_models.rake'
 
 Style/Documentation:
   Exclude:

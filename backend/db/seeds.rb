@@ -16,17 +16,17 @@ Skill.create!(name: 'React')
 Skill.create!(name: 'Typescript')
 Skill.create!(name: 'Vue.js')
 
-animals = %W(ねこ 犬 ペンギン すずめ シマエナガ くじら サメ イルカ さる フクロウ)
+animals = %w[ねこ 犬 ペンギン すずめ シマエナガ くじら サメ イルカ さる フクロウ]
 10.times do |n|
   work = Work.create!(
-    title: "すごい仕事 No.#{}",
+    title: "すごい仕事 No.#{n}",
     description: "この仕事により世界中の#{animals[n]}が喜びました",
     engaged_at: Time.current - n.months,
-    engaged_months: n + 1,
+    engaged_months: n + 1
   )
 
-  next if n.odd? 
+  next if n.odd?
 
   skills = Skill.all.sample(rand(7))
-  skills.each { |skill| WorkSkill.create!(work: work, skill: skill) }
+  skills.each { |skill| WorkSkill.create!(work:, skill: skill) }
 end

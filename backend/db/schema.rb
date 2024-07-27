@@ -15,15 +15,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_27_064506) do
   enable_extension "plpgsql"
 
   create_table "skills", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "note"
+    t.string "name", null: false, comment: "技術の名称"
+    t.text "note", comment: "備考"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "work_skills", force: :cascade do |t|
-    t.bigint "work_id"
-    t.bigint "skill_id"
+    t.bigint "work_id", null: false
+    t.bigint "skill_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["skill_id"], name: "index_work_skills_on_skill_id"
@@ -31,10 +31,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_27_064506) do
   end
 
   create_table "works", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "description"
-    t.integer "engaged_months"
-    t.date "engaged_at"
+    t.string "title", null: false, comment: "仕事の名称"
+    t.text "description", comment: "説明"
+    t.integer "engaged_months", comment: "従事期間(月単位)"
+    t.date "engaged_at", comment: "従事開始日"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -10,8 +10,23 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Skill.create!(name: 'Ruby')
+Skill.create!(name: 'RubyOnRails')
+Skill.create!(name: 'React')
+Skill.create!(name: 'Typescript')
+Skill.create!(name: 'Vue.js')
+
+animals = %W(ねこ 犬 ペンギン すずめ シマエナガ くじら サメ イルカ さる フクロウ)
 10.times do |n|
-  Work.create!(
-    title: ""
+  work = Work.create!(
+    title: "すごい仕事 No.#{}",
+    description: "この仕事により世界中の#{animals[n]}が喜びました",
+    engaged_at: Time.current - n.months,
+    engaged_months: n + 1,
   )
+
+  next if n.odd? 
+
+  skills = Skill.all.sample(rand(7))
+  skills.each { |skill| WorkSkill.create!(work: work, skill: skill) }
 end

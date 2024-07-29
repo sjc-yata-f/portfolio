@@ -20,6 +20,7 @@ services:
     command: bash -c "
       rm -rf tmp/pids/server.pid &&
       bundle install &&
+      bin/rake db:create db:migrate &&
       bundle exec rails s -b 0.0.0.0"
     volumes:
       - ./backend:/usr/src/app/backend
@@ -30,6 +31,9 @@ services:
       - db
     environment:
       TZ: Asia/Tokyo
+      POSTGRES_DB: portfolio
+      POSTGRES_USER: develop
+      POSTGRES_PASSWORD: password
   node:
     image: node:21-alpine
     container_name: portfolio-node

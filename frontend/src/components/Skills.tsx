@@ -1,9 +1,7 @@
-import { Layout } from './Layout'
+import { Layout } from './Layout';
 
 export const Skills = () => {
   const Title = 'Skills';
 
-  return (
-    <Layout title={Title} />
-  )
+  return <Layout title={Title} />;
 };

@@ -1,9 +1,7 @@
-import { Layout } from './Layout'
+import { Layout } from './Layout';
 
 export const TopPage = () => {
   const Title = 'Portfolio App';
 
-  return (
-    <Layout title={Title} />
-  )
+  return <Layout title={Title} />;
 };

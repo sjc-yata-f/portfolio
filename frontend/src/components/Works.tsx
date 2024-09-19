@@ -1,4 +1,6 @@
+import { useQuery } from '@tanstack/react-query'
 import { Layout } from './Layout';
+import { API_PATH } from '../ApiConfig';
 
 type JobType = {
   year: number;
@@ -13,6 +15,14 @@ const Jobs: JobType[] = [
 
 export const Works = () => {
   const Title = 'Works';
+
+  const fetchWorks = async () => {
+    await fetch(API_PATH.works).then((res) => res.json());
+  };
+
+  const query = useQuery({ queryKey: ['works'], queryFn: fetchWorks });
+
+  // console.log(query.data);
 
   return (
     <Layout title={Title}>

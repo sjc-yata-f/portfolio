@@ -11,7 +11,7 @@ type WorkType = {
 };
 
 export const useWork = () => {
-  const [condition, setCondition] = useState<string | undefined>();
+  const [condition, setCondition] = useState<string>('');
 
   const fetchWorks = async () => {
     return await fetch(API_PATH.works).then((res) => {
@@ -25,7 +25,7 @@ export const useWork = () => {
   });
 
   const works = useMemo(() => {
-    if (!condition || condition.length === 0) return fetchedWorks;
+    if (condition.length === 0) return fetchedWorks;
 
     return fetchedWorks.filter((work: WorkType) => {
       const usedSkills = work.skills.map((skill) => skill.name);

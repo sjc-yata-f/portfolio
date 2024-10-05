@@ -1,9 +1,7 @@
-import { useState, useMemo } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { Stack, InputGroup, Input, InputLeftElement } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import { Layout } from './Layout';
-import { API_PATH } from '../ApiConfig';
+import { useWork } from './useWork';
 
 type WorkType = {
   title: string;
@@ -14,28 +12,9 @@ type WorkType = {
 };
 
 export const Works = () => {
-  const [condition, setCondition] = useState<string | undefined>();
   const Title = 'Works';
 
-  const fetchWorks = async () => {
-    return await fetch(API_PATH.works).then((res) => {
-      return res?.json();
-    });
-  };
-
-  const { data: fetchedWorks } = useQuery({
-    queryKey: ['jobs'],
-    queryFn: fetchWorks,
-  });
-
-  const works = useMemo(() => {
-    if (!condition || condition.length == 0) return fetchedWorks;
-
-    return fetchedWorks.filter((work: WorkType) => {
-      const usedSkills = work.skills.map((skill) => skill.name);
-      return usedSkills.includes(condition);
-    });
-  }, [fetchedWorks, condition]);
+  const { works, condition, setCondition } = useWork();
 
   return (
     <Layout title={Title}>

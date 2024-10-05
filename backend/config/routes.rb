@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   namespace :v1 do
+    resources :skills, only: :index
     resources :works, only: :index
   end
 end

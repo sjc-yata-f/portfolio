@@ -1,36 +1,44 @@
-import { useQuery } from '@tanstack/react-query'
+import { Stack, InputGroup, Input, InputLeftElement } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 import { Layout } from './Layout';
-import { API_PATH } from '../ApiConfig';
+import { useWork } from './useWork';
 
-type JobType = {
-  year: number;
+type WorkType = {
+  title: string;
   description: string;
+  engaged_at: string;
+  engaged_months: string;
+  skills: { name: string }[];
 };
-const Jobs: JobType[] = [
-  { year: 2000, description: 'aaa' },
-  { year: 2001, description: 'bbb' },
-  { year: 2002, description: 'ccc' },
-  { year: 2003, description: 'ddd' },
-];
 
 export const Works = () => {
   const Title = 'Works';
 
-  const fetchWorks = async () => {
-    await fetch(API_PATH.works).then((res) => res.json());
-  };
-
-  const query = useQuery({ queryKey: ['works'], queryFn: fetchWorks });
-
-  // console.log(query.data);
+  const { works, condition, setCondition } = useWork();
 
   return (
     <Layout title={Title}>
+      <Stack spacing={4} mt={4} mb={4}>
+        <InputGroup>
+          <InputLeftElement pointerEvents="none">
+            <SearchIcon color="gray.300" />
+          </InputLeftElement>
+          <Input
+            type="text"
+            placeholder="経験のある開発言語を探す"
+            onChange={(e) => setCondition(e.target.value)}
+            defaultValue={condition}
+          />
+        </InputGroup>
+      </Stack>
+
       <ul>
-        {Jobs.map((job: JobType) => {
+        {works?.map((work: WorkType, idx: number) => {
           return (
-            <li>
-              {job.year}:{job.description}
+            <li key={idx}>
+              {work.engaged_at}
+              {work.title}
+              {work.description}
             </li>
           );
         })}

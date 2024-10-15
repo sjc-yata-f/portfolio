@@ -28,5 +28,5 @@ animals = %w[ねこ 犬 ペンギン すずめ シマエナガ くじら サメ 
   next if n.odd?
 
   skills = Skill.all.sample(rand(7))
-  skills.each { |skill| WorkSkill.create!(work:, skill: skill) }
+  skills.each { |skill| WorkSkill.create!(work:, skill:) }
 end
